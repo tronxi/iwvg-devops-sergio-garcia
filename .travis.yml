@@ -6,14 +6,14 @@ branches:
   - master
 notifications:
   slack:
-    secure: IR38cUnQSVU+OE1ynTZhKRf77YiFuYdF0coXSaROB5uc8Xiv9U1jqHGSp5uGc5J1CY10SYzJ5SRntMiAhjTNMVX5PthoSo2lsZvUPdoPGYY20zQ2PP3wMS4MdnYrsX4ZiZmGjwFzv0SpaQyUXAwy2ARKRTMf4DxS6K/bncXhSOeTSVePBFiC8M/UntIKK1dRtSy8wFeVHZWgSqhFOwMZD9iTzMRfA3WNgrdv1qAf9H6oEzIoGF9BHp72+O/67iWdMuDEtsZD/mVmve4BaK74djlgr8agY5cUBGI/4gHVhZsOp5wqb1zwsmxqnyzVYklxa3bF0oX/XcIr7oMivZHcwpHaNZtA7LWq4XuzyBpzWgVcadQI6ySekT+t3+5iZ5sRuRkeO6ahad8S4sDgAM9i4JSduKngbCxIqSJNKLRr4icSTvUTg7wO5wOh7mDKntWZd6kIrFRU0WjTfQVfc6XYe7ouf7FFNN2SxOeV6HW/SO0+sIfnUOshWQeSLnUuRdOyG0o7MuJBvtGmuboqRWaGzrFnMD/S79Yc6RoguiYutpw/rsxxZPReI8DZ1uRwMV/9JaJ1ChhFcTmkACosJ6XsTzzNIrLIGYZwM+NeAVD3iaUW35L3QZAU9sVEAxFOWTcJy6XIsoPAnzIVWFyc/GUfZ2gl43lPPBQazkRewd285Fg=
+    secure: IXTvrPqB+QNrpFRf7xjc880WFWxvxx5h7e7KaW1EbQ9e3mbX4eD9OxqmWjGIH6hGKvqVsbaktKCe7BzGPx1pnTfq+0I2zcCju1uZ+FWyUVqqgrQh0MFU090JTB/QZL2C1TyJ2lpJ2cBB7jzn8emEToQwG+odFNvq+I2tN+8NcuACEaXodf9zjq+WoTkt0GI0UUvvfFmenaUreCW+IIS10V+558ACnz308r1ug5CG5oCek9U9uo5Uo9Hpos/XvG2oyBNmuL1vrKGxSTrx164vpshZE9sFZhuOriZIOdzJWucPE5fZGMg60xKxC35TNkj3Ivzyx8k4Tg+yrEwhYAyj0m00Ey8+2bBSJ/miJV9zlcG8VrG39sKZ35q74BJP9WNXZSqvf8lb0/S3fNQbNoXWj8JkTwN9S9gDYCAzxzGIJMK36opGU4ipJvvmiYv7xczW+g/zCyWA+HZSN/IDogGffr0DkFEAjgteOjk29ArFpRy1XUkRCX8L521LBDe03vq6vfA+zVd+6OZYGpFccu1uY7eySoyRbGQoHAeTYPbZ77oo6s+1Hpl2AbxGXzM+ChW1LUiRd0hMlitZrAAfwQz9IIC5Ar/+MhswF/BxzzjSQMAzKdg1nKNtfGFn8MmQaItpLxvYtRvSKEZQQjOvNimGDQvzajXSQaOYMiG2m3Tkr0Y=
   email:
     recipients:
       - sergio.gsanchez@alumnos.upm.es
 install:
-- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-- mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR
+  - mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR
 deploy:
   app: iwvg-devops-sergio-garcia
   provider: heroku
