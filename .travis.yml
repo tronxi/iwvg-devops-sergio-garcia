@@ -1,20 +1,23 @@
 language: java
 branches:
   only:
-    - develop
-    - "/^release-[0-999].[0-999]$/"
-    - master
+  - develop
+  - "/^release-[0-999].[0-999]$/"
+  - master
 notifications:
   email:
     recipients:
-      - sergio.gsanchez@alumnos.upm.es
+    - sergio.gsanchez@alumnos.upm.es
+  slack:
+    secure: IR38cUnQSVU+OE1ynTZhKRf77YiFuYdF0coXSaROB5uc8Xiv9U1jqHGSp5uGc5J1CY10SYzJ5SRntMiAhjTNMVX5PthoSo2lsZvUPdoPGYY20zQ2PP3wMS4MdnYrsX4ZiZmGjwFzv0SpaQyUXAwy2ARKRTMf4DxS6K/bncXhSOeTSVePBFiC8M/UntIKK1dRtSy8wFeVHZWgSqhFOwMZD9iTzMRfA3WNgrdv1qAf9H6oEzIoGF9BHp72+O/67iWdMuDEtsZD/mVmve4BaK74djlgr8agY5cUBGI/4gHVhZsOp5wqb1zwsmxqnyzVYklxa3bF0oX/XcIr7oMivZHcwpHaNZtA7LWq4XuzyBpzWgVcadQI6ySekT+t3+5iZ5sRuRkeO6ahad8S4sDgAM9i4JSduKngbCxIqSJNKLRr4icSTvUTg7wO5wOh7mDKntWZd6kIrFRU0WjTfQVfc6XYe7ouf7FFNN2SxOeV6HW/SO0+sIfnUOshWQeSLnUuRdOyG0o7MuJBvtGmuboqRWaGzrFnMD/S79Yc6RoguiYutpw/rsxxZPReI8DZ1uRwMV/9JaJ1ChhFcTmkACosJ6XsTzzNIrLIGYZwM+NeAVD3iaUW35L3QZAU9sVEAxFOWTcJy6XIsoPAnzIVWFyc/GUfZ2gl43lPPBQazkRewd285Fg=
 install:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi -Dsonar.login=$SONAR
+- mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=tronxi
+  -Dsonar.login=$SONAR
 deploy:
   app: iwvg-devops-sergio-garcia
   provider: heroku
-  api_key: $HEROKU
+  api_key: "$HEROKU"
   on:
     branch: master
