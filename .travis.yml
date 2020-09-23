@@ -17,4 +17,4 @@ deploy:
   provider: heroku
   api_key: $HEROKU
   on:
-    branch: develop
+    branch: master
