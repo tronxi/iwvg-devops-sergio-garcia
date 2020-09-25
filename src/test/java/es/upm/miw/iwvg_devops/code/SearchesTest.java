@@ -2,8 +2,11 @@ package es.upm.miw.iwvg_devops.code;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class SearchesTest {
 
@@ -20,6 +23,29 @@ class SearchesTest {
     @Test
     void testFindFirstProperFractionByUserIdShouldThrowExceptionWhenNotExists() {
         assertThrows(RuntimeException.class, () -> new Searches().findFirstProperFractionByUserId("4"));
+    }
+
+    @Test
+    void testFindDecimalImproperFractionByUserNameShouldFindFractionsOfAllUsersWithSameName() {
+        List<Double> expectedDecimalList = Arrays.asList(2d, -0.5d);
+
+        List<Double> decimalList = new Searches()
+                .findDecimalImproperFractionByUserName("Oscar")
+                .collect(Collectors.toList());
+
+        assertEquals(expectedDecimalList, decimalList);
+    }
+
+    @Test
+    void testFindDecimalImproperFractionByUserNameShouldFindFractionsOfOneUser() {
+        List<Double> expectedDecimalList = Arrays.asList(2d, 1.3333333333333);
+
+        List<Double> decimalList = new Searches()
+                .findDecimalImproperFractionByUserName("Ana")
+                .collect(Collectors.toList());
+
+        assertEquals(expectedDecimalList.get(0), decimalList.get(0));
+        assertEquals(expectedDecimalList.get(1), decimalList.get(1), 10e-5);
     }
 
 }
