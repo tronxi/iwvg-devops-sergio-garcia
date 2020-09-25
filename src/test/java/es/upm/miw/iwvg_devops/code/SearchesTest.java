@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SearchesTest {
 
@@ -22,7 +23,8 @@ class SearchesTest {
 
     @Test
     void testFindFirstProperFractionByUserIdShouldThrowExceptionWhenNotExists() {
-        assertThrows(RuntimeException.class, () -> new Searches().findFirstProperFractionByUserId("4"));
+        assertThrows(RuntimeException.class, () -> new Searches()
+                .findFirstProperFractionByUserId("4"));
     }
 
     @Test
@@ -57,6 +59,25 @@ class SearchesTest {
                 .collect(Collectors.toList());
 
         assertEquals(expectedUserNamesList, userNamesList);
+    }
+
+    @Test
+    void testFindFractionDivisionByUserId() {
+        Fraction expectedFraction = new Fraction(0, 2);
+
+        Fraction fraction = new Searches()
+                .findFractionDivisionByUserId("1");
+
+        assertEquals(expectedFraction.getNumerator(), fraction.getNumerator());
+        assertEquals(expectedFraction.getDenominator(), fraction.getDenominator());
+    }
+
+    @Test
+    void testFindFractionDivisionByUserIdShouldThrowExceptionWhenFractionNotFound() {
+
+        assertThrows(RuntimeException.class, () -> new Searches()
+                .findFractionDivisionByUserId("0"));
+
     }
 
 }
