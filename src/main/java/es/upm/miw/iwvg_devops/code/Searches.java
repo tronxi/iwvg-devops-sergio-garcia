@@ -20,4 +20,12 @@ public class Searches {
                 .filter(Fraction::isImproper)
                 .map(Fraction::decimal);
     }
+
+    public Stream<String> findUserNameByAnyImproperFraction() {
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions()
+                    .stream()
+                    .anyMatch(Fraction::isImproper))
+                .map(User::getName);
+    }
 }
