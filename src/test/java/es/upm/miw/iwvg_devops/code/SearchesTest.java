@@ -48,4 +48,15 @@ class SearchesTest {
         assertEquals(expectedDecimalList.get(1), decimalList.get(1), 10e-5);
     }
 
+    @Test
+    void testFindUserNameByAnyImproperFraction() {
+        List<String> expectedUserNamesList = Arrays.asList("Oscar", "Ana", "Oscar", "Antonio", "Paula");
+
+        List<String> userNamesList = new Searches()
+                .findUserNameByAnyImproperFraction()
+                .collect(Collectors.toList());
+
+        assertEquals(expectedUserNamesList, userNamesList);
+    }
+
 }
