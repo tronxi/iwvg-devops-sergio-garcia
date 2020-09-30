@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/iwvg-devops-sergio-garcia-1.2.1-Release.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/iwvg-devops-sergio-garcia-1.2.2-Release.jar
